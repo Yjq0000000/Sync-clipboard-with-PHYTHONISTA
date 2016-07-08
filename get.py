@@ -4,7 +4,7 @@ tmp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s= socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 tmp.connect(('127.0.0.2',80))
 ip=tmp.getsockname()[0]
-#print(host
+#print(host)
 port=100
 while 1:
      port=port+1
@@ -13,19 +13,16 @@ while 1:
      except Exception as err:
 	      continue 
      break
-#print(i)
+#print(port)
 img_qr = qrcode.make(ip+' '+str(port))
 img_qr.show()
-#qr = qrtools.QR()]
 tmp.close()
 s.listen(10)         #开始TCP监听
 clipboard.set('')
 conn,addr=s.accept()   #接受TCP连接，并返回新的套接字与IP地址
 #print('Get',addr)   #输出客户端的IP地址
 data_all=('').encode()
-#print(l)
 while 1:
-       #print('lol')
        data=conn.recv(102400)  
        if(len(data)!=0):
        	     #print('0')
@@ -36,7 +33,6 @@ while 1:
              #print('OVER') 
              conn.sendall(''.encode())  
              break
-       #break#否则就把结果发给对端（即客户端）
 if data_all[0:1]=='0'.encode():
 	wh=0
 	hi=0
@@ -54,5 +50,5 @@ if data_all[0:1]=='0'.encode():
 else:
 	print(data_all[1:].decode())
 	clipboard.set(data_all[1:].decode())
-conn.close()     #关闭 
+conn.close()     
 

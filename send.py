@@ -94,7 +94,6 @@ def getimg(s):
 				i=end	
 	else:
 		s.send(img_bytes)
-#	print(1)
 def gettext(s):
 		 	#print('this is text')
 	 	text='1'.encode()+clipboard.get().encode()
